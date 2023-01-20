@@ -8,39 +8,52 @@ spring:
 #      write-dates-as-timestamps: false
 #    date-format: "yyyy-MM-dd HH:mm"
   flyway:
-    enabled: false
-  jpa:
-    hibernate:
-      ddl-auto: drop-and-create
-#      ddl-auto: none
-    #      ddl-auto: drop-and-create
-    generate-ddl: true
-  datasource:
-  url: jdbc:h2:tcp://localhost/~/duombazes/test;SCHEMA=TECH_SCHEMA_EGZAMINAS
-#url: "jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS TECH_SCHEMA\\;SET SCHEMA TECH_SCHEMA"
-#    properties:
-#      hibernate:
-#        show_sql: true
-#        format_sql: true
-
-logging:
-  level:
-    lt:
-      techin: DEBUG
-    org:
-      springframework: INFO
-#      springframework: DEBUG
-#        jdbc:
-#          core:
-#            JdbcTemplate: DEBUG
-#            StatementCreatorUtils: DEBUG
+    enabled: true
+    jpa:
       hibernate:
-        SQL: DEBUG
-        type: TRACE
-      type:
-        descriptor:
-          sql:
-            BasicBinder: INFO
+        ddl-auto: none
+      #      ddl-auto: drop-and-create
+      generate-ddl: false
+      properties:
+        hibernate:
+          show_sql: true
+          format_sql: true
+    datasource:
+#      url: jdbc:h2:tcp://localhost/~/test;SCHEMA=TECH_SCHEMA
+      url: jdbc:h2:file:/~/test
+      #H2 as Server:    url: jdbc:h2:tcp://localhost/~/test;SCHEMA=TECH_SCHEMA
+      #In Memory:    url: "jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS TECH_SCHEMA\\;SET SCHEMA TECH_SCHEMA"
+      # url: jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS TECH_SCHEMA
+      #    url: jdbc:h2:file:/data/demo
+      # home local Win: jdbc:h2:~/test
+      username: sa
+      password:
+      driverClassName: org.h2.Driver
+      jpa:
+        spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  #      generate-ddl: false
 
-application:
-  version: 0.2
+  #      hibernate:
+  #        ddl-auto: none
+  #  h2:
+  #    console.enabled: true
+
+
+  logging:
+    level:
+      lt:
+        techin: DEBUG
+      org:
+        springframework: INFO
+        #      springframework: DEBUG
+        #        jdbc:
+        #          core:
+        #            JdbcTemplate: DEBUG
+        #            StatementCreatorUtils: DEBUG
+        hibernate:
+          SQL: DEBUG
+          type: TRACE
+        type:
+          descriptor:
+            sql:
+              BasicBinder: DEBUG

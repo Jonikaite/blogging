@@ -4,6 +4,8 @@ import lt.techin.blogging.dao.RecordRepository;
 import lt.techin.blogging.model.Record;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/records")
 public class RecordController {
@@ -16,11 +18,17 @@ public class RecordController {
         this.recordRepository = recordRepository;
     }
 
-@PostMapping
-public Record createRecord(@RequestBody Record record) {
-    return recordRepository.save(record);
-}
+    @PostMapping
+    public Record createRecord(@RequestBody Record record) {
+        return recordRepository.save(record);
+    }
 
 //@PostMapping(/{recordId})
 
+
+    @GetMapping
+    public List<Record> getRecords() {
+        return recordRepository.findAll();
+
+    }
 }
