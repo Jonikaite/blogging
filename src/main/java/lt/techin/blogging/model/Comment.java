@@ -2,13 +2,14 @@ package lt.techin.blogging.model;
 
 import com.sun.istack.NotNull;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@javax.persistence.Entity
-public class Record {
+@Entity
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +17,7 @@ public class Record {
     private Long id;
 
     @NotNull
-    private String name;
+    private String author;
     private String text;
 
     public Long getId() {
@@ -27,12 +28,12 @@ public class Record {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getText() {
@@ -47,12 +48,12 @@ public class Record {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Record record = (Record) o;
-        return id.equals(record.id) && name.equals(record.name) && text.equals(record.text);
+        Comment comment = (Comment) o;
+        return id.equals(comment.id) && author.equals(comment.author) && text.equals(comment.text);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, text);
+        return Objects.hash(id, author, text);
     }
 }

@@ -19,8 +19,8 @@ spring:
           show_sql: true
           format_sql: true
     datasource:
-#      url: jdbc:h2:tcp://localhost/~/test;SCHEMA=TECH_SCHEMA
-      url: jdbc:h2:file:/~/test
+      url: jdbc:h2:tcp://localhost/~/test;SCHEMA=TECH_SCHEMA
+#      url: jdbc:h2:file:/~/test
       #H2 as Server:    url: jdbc:h2:tcp://localhost/~/test;SCHEMA=TECH_SCHEMA
       #In Memory:    url: "jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS TECH_SCHEMA\\;SET SCHEMA TECH_SCHEMA"
       # url: jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS TECH_SCHEMA
